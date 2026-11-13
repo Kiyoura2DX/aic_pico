@@ -375,29 +375,10 @@ void init()
     commands_init();
 }
 
-/* if certain key pressed when booting, enter update mode */
+/* Se desactiva la comprobacion por teclado para evitar conflictos con la matriz. */
 static void boot_update_check()
 {
-    const uint8_t pins[] = { 10, 11 }; // keypad 00 and *
-    bool all_pressed = true;
-    for (int i = 0; i < sizeof(pins); i++) {
-        uint8_t gpio = pins[i];
-        gpio_init(gpio);
-        gpio_set_function(gpio, GPIO_FUNC_SIO);
-        gpio_set_dir(gpio, GPIO_IN);
-        gpio_pull_up(gpio);
-        sleep_ms(1);
-        if (gpio_get(gpio)) {
-            all_pressed = false;
-            break;
-        }
-    }
-
-    if (all_pressed) {
-        sleep_ms(100);
-        reset_usb_boot(0, 2);
-        return;
-    }
+    return;
 }
 
 static void sys_init()

@@ -20,13 +20,12 @@
 #define DEFAULT_RGB_ORDER GRB
 #define LED_DEF { 25, 22, 13, 15 }
 
-#define KEYPAD_DEF { 6, 7, 8, 3, 4, 5, 0, 1, 2, 9, 10, 11 }
+#define KEYPAD_ROW_PINS { 8, 9, 10, 11 }  // 4 pines para las filas
+#define KEYPAD_COL_PINS { 5, 6, 7 }       // 3 pines para las columnas
 #define AIC_TOUCH_EN 14
 
-/* HID Keycode: https://github.com/hathach/tinyusb/blob/master/src/class/hid/hid.h */
-// Numpad: 1234567890-.
-#define KEYPAD_NKRO_MAP "\x59\x5a\x5b\x5c\x5d\x5e\x5f\x60\x61\x62\x56\x63"
-
+/* HID Keycode: Números superiores 1-9, 0, - y . (Inmunes a NumLock) */
+#define KEYPAD_NKRO_MAP "\x1e\x1f\x20\x21\x22\x23\x24\x25\x26\x27\x2d\x37"
 #else
 
 #endif
